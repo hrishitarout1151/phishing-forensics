@@ -1,0 +1,19 @@
+From: "Priya Sharma" <priya.sharma@examplecorp.test>
+To: employee@examplecorp.test
+Subject: Team meeting moved to 3 PM
+Date: Sat, 20 Jun 2026 18:26:23 +0000
+Message-ID: <sample4_legit_internal.eml@mail.test>
+Authentication-Results:
+ spf=pass smtp.mailfrom=examplecorp.test; dkim=pass; dmarc=pass
+Received: from unknown (HELO mail.test) by mx.examplecorp.test
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Hi team,
+
+Quick note that today's sync has moved from 2 PM to 3 PM in the same room. Ag=
+enda is unchanged =E2=80=94 sprint review and planning for next week.
+
+See you there,
+Priya
