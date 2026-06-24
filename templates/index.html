@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phishing Email Forensics Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="grid-overlay" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="topbar-id">
+    <span class="dot"></span>
+    <span>IOC-EXTRACT // email header &amp; body forensics</span>
+  </div>
+  <div class="topbar-sub">SOC PROJECT — PHISHING EMAIL ANALYSIS</div>
+</header>
+
+<main>
+  <section class="hero">
+    <p class="eyebrow">Indicator Extraction &amp; Triage</p>
+    <h1>Phishing Email Forensics Console</h1>
+    <p class="lede">
+      Upload a raw <code>.eml</code> file to extract headers, authentication
+      results, URLs, IPs, and attachment risk — then get an automated triage
+      score. Or load one of the sample cases below to see it in action.
+    </p>
+  </section>
+
+  <section class="console">
+    <div class="panel upload-panel">
+      <div class="upload-row">
+        <label class="file-drop" id="fileDrop">
+          <input type="file" id="fileInput" accept=".eml" hidden>
+          <span class="file-drop-text" id="fileDropText">Drop a .eml file here, or click to browse</span>
+        </label>
+        <button class="run-btn" id="analyzeBtn">Analyze →</button>
+      </div>
+
+      <div class="sample-row">
+        <span class="sample-label">Or try a sample case:</span>
+        <div class="sample-chips" id="sampleChips">
+          {% for s in samples %}
+          <button class="sample-chip" data-sample="{{ s }}">{{ s.replace('.eml','').replace('_',' ') }}</button>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="panel report-panel" id="reportPanel" hidden>
+
+      <div class="risk-banner" id="riskBanner">
+        <div class="risk-score" id="riskScore">0</div>
+        <div class="risk-detail">
+          <div class="risk-verdict" id="riskVerdict">—</div>
+          <div class="risk-bar-track"><div class="risk-bar-fill" id="riskBarFill"></div></div>
+        </div>
+      </div>
+
+      <div class="report-grid">
+
+        <div class="report-section">
+          <h3>Header summary</h3>
+          <table class="kv-table" id="headerTable"></table>
+        </div>
+
+        <div class="report-section">
+          <h3>Authentication results</h3>
+          <div class="auth-chips" id="authChips"></div>
+        </div>
+
+        <div class="report-section">
+          <h3>Risk indicators</h3>
+          <ul class="reasons-list" id="reasonsList"></ul>
+        </div>
+
+        <div class="report-section">
+          <h3>Sender analysis</h3>
+          <div id="senderAnalysis"></div>
+        </div>
+
+        <div class="report-section wide">
+          <h3>Extracted URLs &amp; domains</h3>
+          <div id="urlList" class="ioc-list"></div>
+        </div>
+
+        <div class="report-section wide">
+          <h3>Attachments</h3>
+          <div id="attachmentList" class="ioc-list"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="panel" id="errorPanel" hidden>
+      <p class="error-text" id="errorText"></p>
+    </div>
+
+  </section>
+
+  <section class="how">
+    <h2>Methodology</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <span class="how-tag">01 — Headers</span>
+        <p>Parse From, Reply-To, Return-Path, and Received chains for spoofing and routing anomalies.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-tag">02 — Authentication</span>
+        <p>Check SPF, DKIM, and DMARC verdicts — the first line of defense against sender spoofing.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-tag">03 — Content</span>
+        <p>Extract URLs and domains, flag IP-based links, lookalike domains, and urgency language.</p>
+      </div>
+      <div class="how-card">
+        <span class="how-tag">04 — Score</span>
+        <p>Weight every signal into a single triage score so the most dangerous cases surface first.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
