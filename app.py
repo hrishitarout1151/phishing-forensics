@@ -1,6 +1,7 @@
 import os
 import threading
 import webbrowser
+from threading import Timer
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 
@@ -51,7 +52,5 @@ def open_browser():
     webbrowser.open('http://127.0.0.1:5000')
 
 if __name__ == "__main__":
-    app.run(
-        host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000))
-    )
+    Timer(1,open_browser).start()
+    app.run(debug=True)
