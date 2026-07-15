@@ -1,0 +1,24 @@
+From: "PayPal Security" <service@paypa1-secure-verify.com>
+To: employee@examplecorp.test
+Subject: URGENT: Your account has been suspended - Action Required
+Date: Sat, 20 Jun 2026 18:26:23 +0000
+Message-ID: <sample1_paypal_lookalike.eml@mail.test>
+Reply-To: support@paypa1-secure-verify.com
+Authentication-Results:
+ spf=fail smtp.mailfrom=paypa1-secure-verify.com; dkim=fail; dmarc=fail
+Received: from unknown (HELO mail.test) by mx.examplecorp.test
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+Dear Customer,
+
+We have detected unusual activity on your PayPal account and it has been temp=
+orarily suspended. You must verify your identity immediately or your account =
+will be permanently closed within 24 hours.
+
+Click here to confirm your identity: http://198.51.100.23/paypal/verify-login
+
+Failure to act now will result in restricted access.
+
+PayPal Security Team

@@ -1,0 +1,15 @@
+From: Security Desk <alert@secure-banking-notify.com>
+To: user@example.com
+Subject: Unusual login attempt detected
+Date: Mon, 29 Jun 2026 08:15:00 +0000
+
+Dear Customer,
+
+We detected a login attempt from a new device.
+
+If this was not you, verify your identity immediately:
+http://45.88.101.23/bank/login-verify
+
+Failure to act may result in account suspension.
+
+Bank Security Team
